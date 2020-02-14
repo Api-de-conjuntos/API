@@ -1,4 +1,4 @@
-class conjunto():
+class Conjunto():
     def __init__(self,nome):
         self.nome = nome
         self.elementos = list()
@@ -9,4 +9,25 @@ class conjunto():
         return len(self.elementos)
     def imprimir(self):
         print('Nome do conjunto:{}\nElementos:{}'.format(self.nome,self.elementos))
+    def pertence(self, valor):
+        if(valor in self.elementos):
+            return True
+        else:
+            return False
+    def eh_subconjunto(self, valor):
+        for i in valor:
+            if i in self.elementos:
+                return True
+        return False
+    def contem_propriamente(self, valor):
+        retorno = []
+        if len(valor) == len(self.elementos):
+            return False
+        else:
+            for i in valor:
+                if i in self.elementos:
+                    pass
+                else:
+                    return False
+            return True
 
