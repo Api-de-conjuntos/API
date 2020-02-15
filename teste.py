@@ -10,5 +10,21 @@ a.push('u')
 print('Tamanho',a.tamanho())
 a.imprimir()
 print('Pertence:',a.pertence('c'))
-print('subconjunto',a.eh_subconjunto(['b','d','c']))
-print('Contem propriamente:',a.contem_propriamente(['a','e','i','o']))
+B = api.Conjunto('B')
+B.push('e')
+B.push('i')
+B.push('u')
+print('subconjunto',a.eh_subconjunto(B))
+print('Contem propriamente:',a.contem_propriamente(B))
+
+'''
+A = {a,b}
+B = {b}
+
+A é subconjunto de B? Não
+A.eh_subconjunto(B)
+
+A.contem(B)
+B é subconjunto de A? Sim
+
+'''
