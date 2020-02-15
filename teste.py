@@ -16,15 +16,3 @@ B.push('i')
 B.push('u')
 print('subconjunto',a.eh_subconjunto(B))
 print('Contem propriamente:',a.contem_propriamente(B))
-
-'''
-A = {a,b}
-B = {b}
-
-A é subconjunto de B? Não
-A.eh_subconjunto(B)
-
-A.contem(B)
-B é subconjunto de A? Sim
-
-'''
