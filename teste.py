@@ -1,5 +1,5 @@
 import api
-a = api.Conjunto('vogais')#É passado como parametro o nome do conjunto
+a = api.Conjunto('A')#É passado como parametro o nome do conjunto
 #Função responsavel por inserir elementos no conjunto
 a.push('a')
 a.push('e')
@@ -14,5 +14,13 @@ B = api.Conjunto('B')
 B.push('e')
 B.push('i')
 B.push('u')
+B.imprimir()
 print('subconjunto',a.eh_subconjunto(B))
 print('Contem propriamente:',a.contem_propriamente(B))
+c = api.Conjunto('C')
+c.push('a')
+c.push('b')
+c.push('c')
+c.imprimir()
+a.uniao(B,c)
+a.interseccao(c)
