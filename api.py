@@ -38,17 +38,42 @@ class Conjunto():
         for a in args:
             valor= a.elementos
             for v in valor:
-                print(v)
+                
                 if v not in self.elementos:
                     u.push(v)
-        print(u.elementos)
+
+        uni=u.elementos
+        return uni
 
     def interseccao(self,*args):
         i= Conjunto('Intersecção')
+        get=[]
         for a in args:
             valor= a.elementos
-            print(valor)
-            for v in valor:
-                if v in self.elementos:
-                    i.push(v)
-        print("Intersecção:",i.elementos)
+            get.append(valor)   #vou pegar todos os conjuntos que estão em args e colocar em uma lista
+        
+        string=''
+        for x in range(len(get)):   #tentem melhorar essa parte, eu só consegui dessa forma juntar todos os elementos
+            for j in get[x]:
+                string=string+j+' '
+        
+        s=string.split()
+        
+        for e in s:
+            
+            if e in self.elementos:
+                if str(s.count(e)) == str(len(get)):  #se o elemento se repetir a mesma quantidade que o numero de conjuntos, quer dizer que ele está em todos eles
+                    i.push(e)
+
+        inter= i.elementos
+        return inter
+                    
+                
+        
+
+
+
+
+
+
+        
