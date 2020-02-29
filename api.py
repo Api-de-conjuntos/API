@@ -31,22 +31,24 @@ class Conjunto():
                     return False
             return True
 
-    def uniao(self,B,c):
+    def uniao(self,*args):
         u= Conjunto('União')
         for i in self.elementos:
-            if i not in B.elementos:
-                u.push(i)
-        for i in B.elementos:
             u.push(i)
-        for i in c.elementos:
-            if i not in u.elementos:
-                u.push(i)
+        for a in args:
+            valor= a.elementos
+            for v in valor:
+                print(v)
+                if v not in self.elementos:
+                    u.push(v)
         print(u.elementos)
 
-    def interseccao(self,c):
+    def interseccao(self,*args):
         i= Conjunto('Intersecção')
-        for j in self.elementos:
-            if j in c.elementos:
-                i.push(j)
-
+        for a in args:
+            valor= a.elementos
+            print(valor)
+            for v in valor:
+                if v in self.elementos:
+                    i.push(v)
         print("Intersecção:",i.elementos)
