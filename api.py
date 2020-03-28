@@ -55,13 +55,14 @@ class Conjunto():
         for a in args:
             valor= a.elementos
             get.append(valor)   #vou pegar todos os conjuntos que estão em args e colocar em uma lista
-        
+        print(get)
         string=''
         for x in range(len(get)):   #tentem melhorar essa parte, eu só consegui dessa forma juntar todos os elementos
             for j in get[x]:
                 string=string+j+' '
         
         s=string.split()
+        print(s)
         
         for e in s:
             
@@ -71,6 +72,23 @@ class Conjunto():
 
         inter= i.elementos
         return inter
+
+    def diferenca(self,*args):
+        d = Conjunto('Diferença')
+        get = []
+        for i in args:
+            for z in i.elementos:
+
+                get.append(z)
+
+
+        conj= self.elementos
+        for element in conj:
+            if element not in get:
+                print(element)
+                d.inserir(element)
+
+        return d.elementos
                 
         
 
