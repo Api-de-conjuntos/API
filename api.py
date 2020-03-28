@@ -1,9 +1,12 @@
+memoria = {}
+
 class Conjunto():
     def __init__(self,nome):
         self.nome = nome
         self.elementos = list()
-    def push(self,valor):
+    def inserir(self,valor):
         if valor not in self.elementos:
+            
             self.elementos.append(valor)
     def tamanho(self):
         return len(self.elementos)
@@ -30,21 +33,22 @@ class Conjunto():
                 else:
                     return False
             return True
-
     def uniao(self,*args):
-        u= Conjunto('União')
-        for i in self.elementos:
-            u.push(i)
-        for a in args:
-            valor= a.elementos
-            for v in valor:
-                
-                if v not in self.elementos:
-                    u.push(v)
-
-        uni=u.elementos
-        return uni
-
+        nome = self.nome
+        for n in args:
+            nome += '_U_'+n.nome
+        if nome in memoria:
+            return [0,memoria[nome]]
+        else:
+            u = Conjunto(nome)
+            for i in self.elementos:
+                u.inserir(i)
+            for a in args:
+                for v in a.elementos:
+                    if v not in self.elementos:
+                        u.inserir(v)
+            memoria[nome] = u
+            return [1,u]
     def interseccao(self,*args):
         i= Conjunto('Intersecção')
         get=[]
@@ -63,11 +67,10 @@ class Conjunto():
             
             if e in self.elementos:
                 if str(s.count(e)) == str(len(get)):  #se o elemento se repetir a mesma quantidade que o numero de conjuntos, quer dizer que ele está em todos eles
-                    i.push(e)
+                    i.inserir(e)
 
         inter= i.elementos
         return inter
-                    
                 
         
 

@@ -1,28 +1,38 @@
 import api
-a = api.Conjunto('A')#É passado como parametro o nome do conjunto
+'''a = api.Conjunto('A')#É passado como parametro o nome do conjunto
 #Função responsavel por inserir elementos no conjunto
-a.push('a')
-a.push('e')
-a.push('i')
-a.push('a')#aqui é inserido um elemento que ja existe no conjunto. OBS: elemento não sera repetido
-a.push('o')
-a.push('u')
+a.inserir('a')
+a.inserir('e')
+a.inserir('i')
+a.inserir('a')#aqui é inserido um elemento que ja existe no conjunto. OBS: elemento não sera repetido
+a.inserir('o')
+a.inserir('u')
 print('Tamanho',a.tamanho())
 a.imprimir()
 print('Pertence:',a.pertence('c'))
 B = api.Conjunto('B')
-B.push('a')
-B.push('e')
-B.push('i')
-B.push('u')
+B.inserir('a')
+B.inserir('e')
+B.inserir('i')
+B.inserir('u')
 B.imprimir()
 print('subconjunto',a.eh_subconjunto(B))
-print('Contem propriamente:',a.contem_propriamente(B))
+print('Contem propriamente:',a.contem_propriamente(B))'''
 c = api.Conjunto('C')
-c.push('a')
-c.push('b')
-c.push('c')
-c.push('u')
+c.inserir('a')
+c.inserir('b')
+c.inserir('c')
+c.inserir('u')
 c.imprimir()
-print('União:',a.uniao(B,c))
-print('Intersecção:',a.interseccao(B,c))
+"""print('União:',a.uniao(B,c))
+print('Intersecção:',a.interseccao(B,c))"""
+n1 = api.Conjunto('n1')
+for i in range(0,10000,2):
+    n1.inserir(i)
+n2 =api.Conjunto('n2')
+for i in range(10000,20000):
+    n2.inserir(i)
+
+print(n1.uniao(n2))
+print(n1.uniao(n2))
+print('Memoria:',api.memoria)
