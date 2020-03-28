@@ -1,13 +1,14 @@
-memoria = {}
-
+MEMORIA  = dict()
+UNIVERSO = list()
 class Conjunto():
     def __init__(self,nome):
         self.nome = nome
         self.elementos = list()
     def inserir(self,valor):
         if valor not in self.elementos:
-            
             self.elementos.append(valor)
+        if valor not in UNIVERSO:
+            UNIVERSO.append(valor)
     def tamanho(self):
         return len(self.elementos)
     def imprimir(self):
@@ -37,59 +38,57 @@ class Conjunto():
         nome = self.nome
         for n in args:
             nome += '_U_'+n.nome
-        if nome in memoria:
-            return [0,memoria[nome]]
+        if nome in MEMORIA:
+            return MEMORIA[nome]
         else:
-            u = Conjunto(nome)
+            ret = Conjunto(nome)
             for i in self.elementos:
-                u.inserir(i)
+                ret.inserir(i)
             for a in args:
                 for v in a.elementos:
                     if v not in self.elementos:
-                        u.inserir(v)
-            memoria[nome] = u
-            return [1,u]
+                        ret.inserir(v)
+            MEMORIA[nome] = ret
+            return ret
     def interseccao(self,*args):
-        i= Conjunto('Intersecção')
-        get=[]
-        for a in args:
-            valor= a.elementos
-            get.append(valor)   #vou pegar todos os conjuntos que estão em args e colocar em uma lista
-        print(get)
-        string=''
-        for x in range(len(get)):   #tentem melhorar essa parte, eu só consegui dessa forma juntar todos os elementos
-            for j in get[x]:
-                string=string+j+' '
-        
-        s=string.split()
-        print(s)
-        
-        for e in s:
-            
+        nome = self.nome
+        for n in args:
+            nome += '_\cap_'+n.nome
+        ret= Conjunto(nome)
+        todos_elementos=[]
+        for i in args:
+            for x in i.elementos:
+                todos_elementos.append(x)
+
+        for e in todos_elementos:            
             if e in self.elementos:
-                if str(s.count(e)) == str(len(get)):  #se o elemento se repetir a mesma quantidade que o numero de conjuntos, quer dizer que ele está em todos eles
-                    i.inserir(e)
+                if todos_elementos.count(e) == len(args): #se o elemento se repetir a mesma quantidade que o numero de conjuntos, quer dizer que ele está em todos eles
+                    ret.inserir(e)
 
-        inter= i.elementos
-        return inter
-
+        return ret.elementos
     def diferenca(self,*args):
-        d = Conjunto('Diferença')
+        nome = self.nome
+        for n in args:
+            nome += ' - '+n.nome
+        ret = Conjunto(nome)
         get = []
         for i in args:
             for z in i.elementos:
-
                 get.append(z)
-
-
         conj= self.elementos
         for element in conj:
             if element not in get:
                 print(element)
-                d.inserir(element)
+                ret.inserir(element)
+        return ret.elementos
+    def complemento(self):
+        ret = Conjunto('Complemento_de_'+self.nome)
+        for i in UNIVERSO:
+            if i not in self.elementos:
+                ret.inserir(i)
+        return ret.elementos
 
-        return d.elementos
-                
+
         
 
 
