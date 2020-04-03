@@ -91,11 +91,9 @@ class Conjunto():
 
     def conjuntoDasPartes(self):
         arr = self.elementos
-        result= []
+        result = [ () ]
         for i in range(1, len(arr)+1):
             result.extend(set(combinations(arr,i)))
-
-        print(result)
         return result
 
 
