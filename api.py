@@ -1,3 +1,4 @@
+from itertools import combinations
 MEMORIA  = dict()
 UNIVERSO = list()
 class Conjunto():
@@ -87,6 +88,15 @@ class Conjunto():
             if i not in self.elementos:
                 ret.inserir(i)
         return ret.elementos
+
+    def conjuntoDasPartes(self):
+        arr = self.elementos
+        result= []
+        for i in range(1, len(arr)+1):
+            result.extend(set(combinations(arr,i)))
+
+        print(result)
+        return result
 
 
         
